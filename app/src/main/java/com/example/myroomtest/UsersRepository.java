@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
 public class UsersRepository {
 
     private UsersDao myUsersDao;
-    private LiveData<List<Users>> myAllUsers;
+    private LiveData<ArrayList<Users>> myAllUsers;
 
     UsersRepository(Application application) {
         AgendaRoomDatabase db = AgendaRoomDatabase.getDatabase(application);
@@ -21,7 +22,7 @@ public class UsersRepository {
         myAllUsers = myUsersDao.loadAllUsers();
     }
 
-    LiveData<List<Users>> getAllUsers() {
+    LiveData<ArrayList<Users>> getAllUsers() {
         return myAllUsers;
     }
 

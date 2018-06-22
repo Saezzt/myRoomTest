@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ public class EventsRepository {
 
 
     private EventsDao myEventsDao;
-    private LiveData<List<Events>> myAllEvents;
+    private LiveData<ArrayList<Events>> myAllEvents;
 
     EventsRepository(Application application) {
         AgendaRoomDatabase db = AgendaRoomDatabase.getDatabase(application);
@@ -22,7 +23,7 @@ public class EventsRepository {
         myAllEvents = myEventsDao.loadAllEvents();
     }
 
-    LiveData<List<Events>> getAllEvents() {
+    LiveData<ArrayList<Events>> getAllEvents() {
         return myAllEvents;
     }
 

@@ -8,6 +8,7 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,5 +26,5 @@ public interface UsersDao {
     public int deleteUser(Users... users);
 
     @Query("SELECT * FROM users ORDER BY name ASC")
-    public LiveData<List<Users>> loadAllUsers();
+    public LiveData<ArrayList<Users>> loadAllUsers();
 }
