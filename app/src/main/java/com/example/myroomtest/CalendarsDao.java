@@ -36,4 +36,6 @@ public interface CalendarsDao {
     @Query("SELECT * FROM calendars WHERE account_name = :search")
     public LiveData<List<Calendars>> loadAllCalendarsWithAcN(String search);
 
+    @Query("SELECT * FROM calendars")
+    public List<Calendars> sLoadAllCalendars();
 }

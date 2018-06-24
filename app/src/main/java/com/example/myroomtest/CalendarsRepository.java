@@ -16,15 +16,20 @@ public class CalendarsRepository {
 
     private CalendarsDao myCalendarsDao;
     private LiveData<List<Calendars>> myAllCalendars;
+    private List<Calendars> mySAllCalendars;
 
     CalendarsRepository(Application application) {
         AgendaRoomDatabase db = AgendaRoomDatabase.getDatabase(application);
         myCalendarsDao = db.calendarsDao();
         myAllCalendars = myCalendarsDao.loadAllCalendars();
+        mySAllCalendars = myCalendarsDao.sLoadAllCalendars();
     }
 
     LiveData<List<Calendars>> getAllCalendars() {
         return myAllCalendars;
+    }
+    List<Calendars> getSAllCalendars() {
+        return mySAllCalendars;
     }
 
     public void insert (Calendars Calendar) {

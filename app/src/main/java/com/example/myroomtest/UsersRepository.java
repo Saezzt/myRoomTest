@@ -15,17 +15,21 @@ public class UsersRepository {
 
     private UsersDao myUsersDao;
     private LiveData<List<Users>> myAllUsers;
+    private List<Users> mySAllUsers;
 
     UsersRepository(Application application) {
         AgendaRoomDatabase db = AgendaRoomDatabase.getDatabase(application);
         myUsersDao = db.usersDao();
         myAllUsers = myUsersDao.loadAllUsers();
+        mySAllUsers = myUsersDao.sLoadAllUsers();
     }
 
     LiveData<List<Users>> getAllUsers() {
         return myAllUsers;
     }
-
+    List<Users> getSAllUsers() {
+        return mySAllUsers;
+    }
 
     public void insert (Users user) {
         new insertAsyncTask(myUsersDao).execute(user);

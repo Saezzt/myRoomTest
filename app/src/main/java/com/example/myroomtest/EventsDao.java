@@ -33,4 +33,6 @@ public interface EventsDao {
     @Query("SELECT * FROM events WHERE _calendar = :search")
     public LiveData<List<Events>> loadAllEventsWithCal(int search);
 
+    @Query("SELECT * FROM events")
+    public List<Events> sLoadAllEvents();
 }

@@ -26,4 +26,7 @@ public interface UsersDao {
 
     @Query("SELECT * FROM users ORDER BY account_name ASC")
     LiveData<List<Users>> loadAllUsers();
+
+    @Query("SELECT * FROM users ORDER BY account_name ASC")
+    List<Users> sLoadAllUsers();
 }
