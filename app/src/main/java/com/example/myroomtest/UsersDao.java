@@ -8,7 +8,6 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,14 +16,14 @@ import java.util.List;
 @Dao
 public interface UsersDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    public long insertUser(Users... users);
+    void insertUser(Users... users);
 
     @Update
-    public int updateUser(Users... users);
+    void updateUser(Users... users);
 
     @Delete
-    public int deleteUser(Users... users);
+    void deleteUser(Users... users);
 
-    @Query("SELECT * FROM users ORDER BY name ASC")
-    public LiveData<ArrayList<Users>> loadAllUsers();
+    @Query("SELECT * FROM users ORDER BY account_name ASC")
+    LiveData<List<Users>> loadAllUsers();
 }

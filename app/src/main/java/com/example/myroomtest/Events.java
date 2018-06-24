@@ -12,20 +12,16 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 /**
  * Created by Marco on 20/06/2018.
  */
-@Entity(tableName = "events", indices = {@Index("calendar"), @Index(value = {"calendar"})}, foreignKeys = @ForeignKey(entity = Calendars.class, parentColumns = "id", childColumns = "calendar", onDelete = CASCADE, onUpdate = CASCADE))
+@Entity(tableName = "events", indices = {@Index(value = {"_calendar"})}, foreignKeys = @ForeignKey(entity = Calendars.class, parentColumns = "_id", childColumns = "_calendar", onDelete = CASCADE, onUpdate = CASCADE))
 public class Events {
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "id")
-    private int eve_id;
+    @ColumnInfo(name = "_id")
+    private int _id;
 
     @NonNull
-    @ColumnInfo(name = "calendar")
-    private int col_id;
-
-    @ColumnInfo(name = "owner")
-    @NonNull
-    private String owner;
+    @ColumnInfo(name = "_calendar")
+    private int _calendar;
 
     @NonNull
     private boolean traffic;
@@ -33,9 +29,7 @@ public class Events {
     @NonNull
     private boolean meteo;
 
-    private String location;
-
-    private int distance;
+    private  String location;
 
     private int duration;
 
@@ -43,44 +37,33 @@ public class Events {
 
     private int lat;
 
-    public Events(@NonNull int eve_id, @NonNull int col_id, @NonNull String owner, @NonNull boolean traffic, @NonNull boolean meteo, String location, int distance, int duration, int lon, int lat) {
-        this.eve_id = eve_id;
-        this.col_id = col_id;
-        this.owner = owner;
+    public Events(@NonNull int _id, @NonNull int _calendar, @NonNull boolean traffic, @NonNull boolean meteo, String location, int duration, int lon, int lat) {
+        this._id = _id;
+        this._calendar = _calendar;
         this.traffic = traffic;
         this.meteo = meteo;
         this.location = location;
-        this.distance = distance;
         this.duration = duration;
         this.lon = lon;
         this.lat = lat;
     }
 
     @NonNull
-    public int getEve_id() {
-        return eve_id;
+    public int get_id() {
+        return _id;
     }
 
-    public void setEve_id(@NonNull int eve_id) {
-        this.eve_id = eve_id;
-    }
-
-    @NonNull
-    public int getCol_id() {
-        return col_id;
-    }
-
-    public void setCol_id(@NonNull int col_id) {
-        this.col_id = col_id;
+    public void set_id(@NonNull int _id) {
+        this._id = _id;
     }
 
     @NonNull
-    public String getOwner() {
-        return owner;
+    public int get_calendar() {
+        return _calendar;
     }
 
-    public void setOwner(@NonNull String owner) {
-        this.owner = owner;
+    public void set_calendar(@NonNull int _calendar) {
+        this._calendar = _calendar;
     }
 
     @NonNull
@@ -107,14 +90,6 @@ public class Events {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public int getDistance() {
-        return distance;
-    }
-
-    public void setDistance(int distance) {
-        this.distance = distance;
     }
 
     public int getDuration() {

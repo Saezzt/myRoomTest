@@ -8,7 +8,6 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +16,10 @@ import java.util.List;
 @Dao
 public interface CalendarsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    public long insertCalendar(Calendars... calendar);
+    public void insertCalendar(Calendars... calendar);
+
+    @Insert
+    public void insertAllCalendars(Calendars[] Calendar);
 
     @Update
     public int updateCalendar(Calendars... calendar);
@@ -25,9 +27,13 @@ public interface CalendarsDao {
     @Delete
     public int deleteCalendar(Calendars... calendar);
 
-    @Query("SELECT * FROM calendars")
-    public LiveData<ArrayList<Calendars>> loadAllCalendars();
+    @Delete
+    public int deleteAllCalendar(Calendars[] calendar);
 
-    @Query("SELECT * FROM calendar WHERE account_name = :search")
-    public LiveData<ArrayList<Calendars>> loadAllCalendarsWithAcN(String search);
+    @Query("SELECT * FROM calendars")
+    public LiveData<List<Calendars>> loadAllCalendars();
+
+    @Query("SELECT * FROM calendars WHERE account_name = :search")
+    public LiveData<List<Calendars>> loadAllCalendarsWithAcN(String search);
+
 }

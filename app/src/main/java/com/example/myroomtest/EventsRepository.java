@@ -4,7 +4,6 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +14,7 @@ public class EventsRepository {
 
 
     private EventsDao myEventsDao;
-    private LiveData<ArrayList<Events>> myAllEvents;
+    private LiveData<List<Events>> myAllEvents;
 
     EventsRepository(Application application) {
         AgendaRoomDatabase db = AgendaRoomDatabase.getDatabase(application);
@@ -23,7 +22,7 @@ public class EventsRepository {
         myAllEvents = myEventsDao.loadAllEvents();
     }
 
-    LiveData<ArrayList<Events>> getAllEvents() {
+    LiveData<List<Events>> getAllEvents() {
         return myAllEvents;
     }
 
@@ -37,6 +36,25 @@ public class EventsRepository {
         private EventsDao mAsyncTaskDao;
 
         insertAsyncTask(EventsDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Events... params) {
+            mAsyncTaskDao.insertEvent(params);
+            return null;
+        }
+    }
+
+    public void insertAll (Events... Event) {
+        new EventsRepository.insertAllAsyncTask(myEventsDao).execute(Event);
+    }
+
+    private static class insertAllAsyncTask extends AsyncTask<Events, Void, Void> {
+
+        private EventsDao mAsyncTaskDao;
+
+        insertAllAsyncTask(EventsDao dao) {
             mAsyncTaskDao = dao;
         }
 

@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">myRoomTest</string>
+    <string name="app_name">La mia Lista</string>
     <string name="action_settings">Settings</string>
+    <string name="hint_word">inserisci voce...</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">voce non salvata poichè il campo è vuoto.</string>
 </resources>

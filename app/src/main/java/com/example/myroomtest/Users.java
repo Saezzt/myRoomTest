@@ -15,13 +15,16 @@ import android.support.annotation.NonNull;
 public class Users {
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "name")
+    @ColumnInfo(name = "account_name")
     private String account_name;
 
-    @ColumnInfo(name = "type")
+    @ColumnInfo(name = "account_type")
     private String account_type;
 
-    public Users(String name, String type) {this.account_name = name; this.account_type = type;}
+    public Users(@NonNull String account_name, String account_type) {
+        this.account_name = account_name;
+        this.account_type = account_type;
+    }
 
     @NonNull
     public String getAccount_name() {

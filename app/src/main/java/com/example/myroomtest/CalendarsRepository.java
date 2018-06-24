@@ -4,7 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -15,7 +15,7 @@ public class CalendarsRepository {
 
 
     private CalendarsDao myCalendarsDao;
-    private LiveData<ArrayList<Calendars>> myAllCalendars;
+    private LiveData<List<Calendars>> myAllCalendars;
 
     CalendarsRepository(Application application) {
         AgendaRoomDatabase db = AgendaRoomDatabase.getDatabase(application);
@@ -23,10 +23,9 @@ public class CalendarsRepository {
         myAllCalendars = myCalendarsDao.loadAllCalendars();
     }
 
-    LiveData<ArrayList<Calendars>> getAllCalendars() {
+    LiveData<List<Calendars>> getAllCalendars() {
         return myAllCalendars;
     }
-
 
     public void insert (Calendars Calendar) {
         new CalendarsRepository.insertAsyncTask(myCalendarsDao).execute(Calendar);
@@ -47,6 +46,30 @@ public class CalendarsRepository {
         }
     }
 
+    public void insertAll (Calendars... calendars) {
+        new CalendarsRepository.insertAllAsyncTask(myCalendarsDao).execute(calendars);
+    }
+
+    private static class insertAllAsyncTask extends AsyncTask<Calendars, Void, Void> {
+
+        private CalendarsDao mAsyncTaskDao;
+
+        insertAllAsyncTask(CalendarsDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Calendars... params) {
+            for (Calendars tmp: params
+                 ) {
+                mAsyncTaskDao.insertCalendar(tmp);
+            }
+            return null;
+        }
+    }
+
+
+
     public void delete (Calendars Calendar) {
         new CalendarsRepository.deleteAsyncTask(myCalendarsDao).execute(Calendar);
     }
@@ -62,6 +85,25 @@ public class CalendarsRepository {
         @Override
         protected Void doInBackground(final Calendars... params) {
             mAsyncTaskDao.deleteCalendar(params);
+            return null;
+        }
+    }
+
+    public void deleteAll (Calendars... Calendar) {
+        new CalendarsRepository.deleteAllAsyncTask(myCalendarsDao).execute(Calendar);
+    }
+
+    private static class deleteAllAsyncTask extends AsyncTask<Calendars, Void, Void> {
+
+        private CalendarsDao mAsyncTaskDao;
+
+        deleteAllAsyncTask(CalendarsDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Calendars... params) {
+            mAsyncTaskDao.deleteAllCalendar(params);
             return null;
         }
     }
