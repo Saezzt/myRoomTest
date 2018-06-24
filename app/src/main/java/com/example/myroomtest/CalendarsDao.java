@@ -38,4 +38,7 @@ public interface CalendarsDao {
 
     @Query("SELECT * FROM calendars")
     public List<Calendars> sLoadAllCalendars();
+
+    @Query("SELECT * FROM calendars WHERE account_name = :search")
+    public List<Calendars> sLoadAllCalendarsWithAcN(String search);
 }

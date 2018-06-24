@@ -32,6 +32,10 @@ public class CalendarsRepository {
         return mySAllCalendars;
     }
 
+    List<Calendars> getSAllCalendarsWithAcN(String search) {
+        return myCalendarsDao.sLoadAllCalendarsWithAcN(search);
+    }
+
     public void insert (Calendars Calendar) {
         new CalendarsRepository.insertAsyncTask(myCalendarsDao).execute(Calendar);
     }

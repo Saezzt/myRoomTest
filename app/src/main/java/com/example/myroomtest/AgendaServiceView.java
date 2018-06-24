@@ -33,6 +33,7 @@ public class AgendaServiceView extends AndroidViewModel {
     List<Users> getAllUsers() { return AllUsers; }
     List<Calendars> getAllCalendars() { return AllCalendars; }
     List<Events> getAllEvents() { return AllEvents; }
+    List<Calendars> getAllCalendarsWithAcN(String search) { return calendarsRepository.getSAllCalendarsWithAcN(search); }
 
     public void insertAllC(List<Calendars> calendars) {
         Calendars[] params = new Calendars[calendars.size()];

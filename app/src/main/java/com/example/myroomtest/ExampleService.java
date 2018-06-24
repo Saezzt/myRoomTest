@@ -27,6 +27,7 @@ public class ExampleService extends Service {
         myAgendaServiceView.getAllEvents().contains(new Events(0000, 0000, false, false, "location",0,0, 0));
         myAgendaServiceView.getAllEvents().add(new Events(0000, 0000, false, false,"location",0, 0, 0));//aggiunge solo nella lista non nel DB!
         myAgendaServiceView.getAllEvents().get(0);
+        myAgendaServiceView.getAllCalendarsWithAcN("account_name");
 
         //NB per le modifiche alle tuple usiamo l'inserimento, room non farà altro che sostituire la tupla, quindi vanno settati tutti i parametri e non solo quello che cambia
 
