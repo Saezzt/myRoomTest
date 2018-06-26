@@ -17,15 +17,15 @@ public class ExampleService extends Service {
     public IBinder onBind(Intent intent) {
         return null;
     }
-
+/*
     public void example_create(){
         AgendaServiceView myAgendaServiceView = new AgendaServiceView(getApplication());
     }
 
     public void example_use(AgendaServiceView myAgendaServiceView){
         myAgendaServiceView.getAllEvents();
-        myAgendaServiceView.getAllEvents().contains(new Events(0000, 0000, false, false, "location",0,0, 0));
-        myAgendaServiceView.getAllEvents().add(new Events(0000, 0000, false, false,"location",0, 0, 0));//aggiunge solo nella lista non nel DB!
+        myAgendaServiceView.getAllEvents().contains(new Events(new Long(111), new Long(1),false, false,"location",0, 0.0, 0.0));
+        myAgendaServiceView.getAllEvents().add(new Events(new Long(111), new Long(1),false, false,"location",0, 0.0, 0.0));//aggiunge solo nella lista non nel DB!
         myAgendaServiceView.getAllEvents().get(0);
         myAgendaServiceView.getAllCalendarsWithAcN("account_name");
 
@@ -42,6 +42,6 @@ public class ExampleService extends Service {
         myAgendaServiceView.insertAllE(null);
         myAgendaServiceView.insertE(null);
         myAgendaServiceView.deleteE(null);
-    }
+    }*/
 
 }

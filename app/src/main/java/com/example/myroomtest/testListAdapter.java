@@ -41,6 +41,7 @@ public class testListAdapter extends RecyclerView.Adapter<testListAdapter.testVi
             Events current = testList.get(position);
             //Calendars current = testList.get(position);
             holder.testItemView.setText("cal: "+current.get_calendar()+", id: "+current.get_id());
+//            holder.testItemView.setText(current.getAccount_name());
         } else {
             // Covers the case of data not being ready yet.
             holder.testItemView.setText("No Calendars");
@@ -48,16 +49,20 @@ public class testListAdapter extends RecyclerView.Adapter<testListAdapter.testVi
     }
 
     void setCalendars(List<Calendars> calendars){
-        //testList = calendars;
+//        testList = calendars;
         notifyDataSetChanged();
     }
 
     void setUsers(List<Users> users){
-        //testList = users;
+//        testList = users;
         notifyDataSetChanged();
     }
     void setEvents(List<Events> events){
         testList = events;
+        notifyDataSetChanged();
+    }
+    void setWords(List<Word> words){
+//        testList = words;
         notifyDataSetChanged();
     }
     // getItemCount() is called many times, and when it is first called,

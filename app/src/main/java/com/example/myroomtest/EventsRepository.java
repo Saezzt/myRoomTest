@@ -12,22 +12,21 @@ import java.util.List;
 
 public class EventsRepository {
 
-
     private EventsDao myEventsDao;
     private LiveData<List<Events>> myAllEvents;
-    private List<Events> mySAllEvents;
+//    private List<Events> mySAllEvents;
 
     EventsRepository(Application application) {
         AgendaRoomDatabase db = AgendaRoomDatabase.getDatabase(application);
         myEventsDao = db.eventsDao();
         myAllEvents = myEventsDao.loadAllEvents();
-        mySAllEvents = myEventsDao.sLoadAllEvents();
+//        mySAllEvents = myEventsDao.sLoadAllEvents();
     }
 
     LiveData<List<Events>> getAllEvents() {
         return myAllEvents;
     }
-    List<Events> getSAllEvents() { return  mySAllEvents; }
+//    List<Events> getSAllEvents() { return  mySAllEvents; }
 
 
     public void insert (Events Event) {

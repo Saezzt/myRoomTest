@@ -17,11 +17,11 @@ public class Events {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "_id")
-    private int _id;
+    private Long _id;
 
     @NonNull
     @ColumnInfo(name = "_calendar")
-    private int _calendar;
+    private Long _calendar;
 
     @NonNull
     private boolean traffic;
@@ -31,13 +31,13 @@ public class Events {
 
     private  String location;
 
-    private int duration;
+    private Integer duration;
 
-    private int lon;
+    private Double lon;
 
-    private int lat;
+    private Double lat;
 
-    public Events(@NonNull int _id, @NonNull int _calendar, @NonNull boolean traffic, @NonNull boolean meteo, String location, int duration, int lon, int lat) {
+    public Events(@NonNull Long _id, @NonNull Long _calendar, @NonNull boolean traffic, @NonNull boolean meteo, String location, Integer duration, Double lon, Double lat) {
         this._id = _id;
         this._calendar = _calendar;
         this.traffic = traffic;
@@ -49,20 +49,20 @@ public class Events {
     }
 
     @NonNull
-    public int get_id() {
+    public Long get_id() {
         return _id;
     }
 
-    public void set_id(@NonNull int _id) {
+    public void set_id(@NonNull Long _id) {
         this._id = _id;
     }
 
     @NonNull
-    public int get_calendar() {
+    public Long get_calendar() {
         return _calendar;
     }
 
-    public void set_calendar(@NonNull int _calendar) {
+    public void set_calendar(@NonNull Long _calendar) {
         this._calendar = _calendar;
     }
 
@@ -92,27 +92,27 @@ public class Events {
         this.location = location;
     }
 
-    public int getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    public int getLon() {
+    public Double getLon() {
         return lon;
     }
 
-    public void setLon(int lon) {
+    public void setLon(Double lon) {
         this.lon = lon;
     }
 
-    public int getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(int lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 }

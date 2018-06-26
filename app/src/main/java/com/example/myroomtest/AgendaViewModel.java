@@ -1,9 +1,13 @@
 package com.example.myroomtest;
 
+import android.app.Activity;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.os.AsyncTask;
+import android.widget.Toast;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 /**
@@ -45,11 +49,15 @@ public class AgendaViewModel extends AndroidViewModel {
         params = events.toArray(params);
         eventsRepository.insertAll(params); }
 
-    public void insertU(Users user) { usersRepository.insert(user); }
-    public void deleteU(Users user) { usersRepository.delete(user); };
+    public void insertU(Users user) {
+//        new InsertUAsyncTask(this,user, usersRepository).execute();
+            usersRepository.insert(user);
+    }
+    public void deleteU(Users user) { usersRepository.delete(user); }
     public void insertC(Calendars calendar) { calendarsRepository.insert(calendar); }
     public void deleteAllC(Calendars... calendars) { calendarsRepository.deleteAll(calendars); }
     public void deleteC(Calendars calendar) { calendarsRepository.delete(calendar); }
-    public void insertE(Events event) { eventsRepository.insert(event);};
+    public void insertE(Events event) { eventsRepository.insert(event);}
     public void deleteE(Events event) { eventsRepository.delete(event);}
+
 }

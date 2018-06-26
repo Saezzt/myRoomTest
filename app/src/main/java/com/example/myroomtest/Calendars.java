@@ -17,23 +17,23 @@ public class Calendars {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "_id")
-    private int _id;
+    private Long _id;
 
     @NonNull
     @ColumnInfo(name = "account_name")
     private String account_name;
 
-    public Calendars(@NonNull int _id, @NonNull String account_name) {
+    public Calendars(@NonNull Long _id, @NonNull String account_name) {
         this._id = _id;
         this.account_name = account_name;
     }
 
     @NonNull
-    public int get_id() {
+    public Long get_id() {
         return _id;
     }
 
-    public void set_id(@NonNull int cal_id) {
+    public void set_id(@NonNull Long cal_id) {
         this._id = cal_id;
     }
 

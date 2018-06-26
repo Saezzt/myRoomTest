@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,26 +12,31 @@ import java.util.List;
  */
 
 public class AgendaServiceView extends AndroidViewModel {
-
-    private UsersRepository usersRepository;
+    private UsersStaticRepository usersRepository;
+    private ArrayList<Users> AllUsers;
+   /*
     private CalendarsRepository calendarsRepository;
     private EventsRepository eventsRepository;
 
-    private List<Users> AllUsers;
+
     private List<Calendars> AllCalendars;
-    private List<Events> AllEvents;
+    private List<Events> AllEvents;*/
 
     public AgendaServiceView(Application application) {
         super(application);
-        usersRepository = new UsersRepository(application);
+        usersRepository = new UsersStaticRepository(application);
+        AllUsers = usersRepository.getSAllUsers();
+       /*
         calendarsRepository = new CalendarsRepository(application);
         eventsRepository = new EventsRepository(application);
         AllUsers = usersRepository.getSAllUsers();
         AllCalendars = calendarsRepository.getSAllCalendars();
-        AllEvents = eventsRepository.getSAllEvents();
+        AllEvents = eventsRepository.getSAllEvents();*/
     }
 
     List<Users> getAllUsers() { return AllUsers; }
+/*
+
     List<Calendars> getAllCalendars() { return AllCalendars; }
     List<Events> getAllEvents() { return AllEvents; }
     List<Calendars> getAllCalendarsWithAcN(String search) { return calendarsRepository.getSAllCalendarsWithAcN(search); }
@@ -46,11 +52,12 @@ public class AgendaServiceView extends AndroidViewModel {
         params = events.toArray(params);
         eventsRepository.insertAll(params); }
 
-    public void insertU(Users user) { usersRepository.insert(user); }
-    public void deleteU(Users user) { usersRepository.delete(user); };
+
     public void insertC(Calendars calendar) { calendarsRepository.insert(calendar); }
     public void deleteAllC(Calendars... calendars) { calendarsRepository.deleteAll(calendars); }
     public void deleteC(Calendars calendar) { calendarsRepository.delete(calendar); }
     public void insertE(Events event) { eventsRepository.insert(event);};
-    public void deleteE(Events event) { eventsRepository.delete(event);}
+    public void deleteE(Events event) { eventsRepository.delete(event);}*/
+    public void insertU(Users user) { usersRepository.insert(user); }
+    public void deleteU(Users user) { usersRepository.delete(user); };
 }

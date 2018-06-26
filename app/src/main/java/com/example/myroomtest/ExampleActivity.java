@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ExampleActivity extends AppCompatActivity{
 
-    private AgendaViewModel myViewModel;
+    /*private AgendaViewModel myViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,8 +46,8 @@ public class ExampleActivity extends AppCompatActivity{
 
     public void example_extractLiveData (){
         myViewModel.getAllEvents().getValue();
-        myViewModel.getAllEvents().getValue().contains(new Events(0000, 0000, false, false, "location",0,0, 0));
-        myViewModel.getAllEvents().getValue().add(new Events(0000, 0000, false, false,"location",0, 0, 0));//aggiunge solo nella lista non nel DB!
+        myViewModel.getAllEvents().getValue().contains(new Events(new Long(111), new Long(1),false, false,"location",0, 0.0, 0.0));
+        myViewModel.getAllEvents().getValue().add(new Events(new Long(111), new Long(1),false, false,"location",0, 0.0, 0.0));//aggiunge solo nella lista non nel DB!
         myViewModel.getAllEvents().getValue().get(0);
     }
     public void example_modDB (){
@@ -65,5 +65,5 @@ public class ExampleActivity extends AppCompatActivity{
         myViewModel.insertAllE(null);
         myViewModel.insertE(null);
         myViewModel.deleteE(null);
-    }
+    }*/
 }
